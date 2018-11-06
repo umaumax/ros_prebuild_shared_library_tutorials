@@ -18,10 +18,10 @@ file(COPY ${libhello_realpath} DESTINATION ${CATKIN_DEVEL_PREFIX}/lib)
 
 ## FYI
 ### other way?
-[export a prebuilt library in catkin \- ROS Answers: Open Source Q&A Forum]( https://answers.ros.org/question/97606/export-a-prebuilt-library-in-catkin/ )
-[prosilica\_gige\_sdk/CMakeLists\.txt at hydro\-devel · ros\-drivers/prosilica\_gige\_sdk]( https://github.com/ros-drivers/prosilica_gige_sdk/blob/hydro-devel/CMakeLists.txt )
-この方法でexportしたshared_libraryをlinkすると絶対パスでlinkされてしまう
-(この理由はcatkinが絶対パスの.soでexportしてしまうため)
+* [export a prebuilt library in catkin \- ROS Answers: Open Source Q&A Forum]( https://answers.ros.org/question/97606/export-a-prebuilt-library-in-catkin/ )
+  * [prosilica\_gige\_sdk/CMakeLists\.txt at hydro\-devel · ros\-drivers/prosilica\_gige\_sdk]( https://github.com/ros-drivers/prosilica_gige_sdk/blob/hydro-devel/CMakeLists.txt )
+    * この方法でexportしたshared_libraryをlinkすると絶対パスでlinkされてしまう
+    * (この理由はcatkinが絶対パスの.soでexportしてしまうため)
 
 lib build command
 ```

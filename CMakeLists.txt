@@ -102,8 +102,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES ros_prebuild_shared_library_tutorials
+  LIBRARIES hello
 #  CATKIN_DEPENDS roscpp std_msgs
 #  DEPENDS system_lib
 )
@@ -148,6 +149,14 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+find_library(libhello_path hello PATHS lib/)
+add_library(hello_lib_dummy_target EXCLUDE_FROM_ALL ${libhello_path})
+set_target_properties(hello_lib_dummy_target PROPERTIES LINKER_LANGUAGE CXX)
+file(COPY ${libhello_path} DESTINATION ${CATKIN_DEVEL_PREFIX}/lib)
+# NOTE: for symbolic linked real file
+get_filename_component(libhello_realpath ${libhello_path} REALPATH)
+file(COPY ${libhello_realpath} DESTINATION ${CATKIN_DEVEL_PREFIX}/lib)
 
 #############
 ## Install ##
